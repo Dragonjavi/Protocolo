@@ -1,0 +1,281 @@
+%% Correcciones y sugerencias por William Gutiérrez
+%% para no perder la costumbre :-)
+%% Debe incluir al Dr. Sergio López, asesor principal
+\documentclass[12pt,letterpaper,titlepage]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{cancel}
+\usepackage{mathrsfs,amsfonts,mathptmx}
+\usepackage[text={5.8in,8.6in},centering]{geometry}
+\renewcommand{\spanishoperators}{sen spec d}
+\renewcommand{\baselinestretch}{1.6}
+\makeatletter \decimalpoint
+  \def\th@exercise{%
+    \normalfont % body font
+    \thm@headpunct{:}%
+  }
+
+\makeatother
+\usepackage{hyperref}
+\hypersetup{% bookmarksnumbered,
+  bookmarksopen,
+  pdfpagelayout=OneColumn,
+  pdfview=FitH,
+  pdfstartview=FitH,
+  pdfborder={0 0 0}}
+
+
+
+
+% \theoremstyle{definition}
+\renewcommand{\spanishrefname}{Bibliografía preliminar}
+
+\title{Protocolo de trabajo de graduación:\\
+Teoría de los Grupo-Anillos y sus Aplicaciones}
+\author{Br. Hugo Allan García Monterrosa\\Carné: 2007-14466\\Dirección: Villa San Diego Casa 4A San Felipe de Jesús,\\Antigua Guatemala\\Teléfono: 5414\,4586\\Asesores: Lic. William Roberto Gutiérrez Herrera \\ Dr. Sergio López  Permouth\\Licenciatura en Matemática Aplicada\\Universidad de San Carlos de Guatemala\\Número de páginas: \pageref{fin}}
+\date{Guatemala, \today}
+
+\begin{document}
+%\begin{titlepage}
+%\renewcommand{\thepage}{}
+%\pagestyle{empty}
+\maketitle
+%\end{titlepage}\newpage
+\setcounter{page}{2}
+\tableofcontents
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Introducción}
+Los \textit{grupo-anillos} son una estructura muy interesante por sus propiedades algebraicas y su importancia surgió, aparentemente, después de los trabajos de T. Molien, G. Frobenius, I. Schur y H. Maschke en los inicios del siglo \lsc{xx}. La importancia de esta estructura en la \textbf{teoría de la representación de grupos} fue establecida por E. Noether y R. Brauer en \cite{b10} y \cite{b11}, a partir de ese punto los grupo-anillos comenzaron a ser estudiados como materia aparte por derecho propio. \bigskip
+
+El estudio de los grupo-anillos involucra el conocimiento de diversas ramas de la matemática (teoría de campos, el álgebra lineal y la teoría algebraica de números), además de estar ampliamente relacionados con la \textit{topología algebraica}, el \textit{álgebra homológica} y la \textit{K-teoría algebraica}. En la última década, ver \cite{b12}, también se ha encontrado que los grupo-anillos tienen aplicaciones en la \textit{teoría algebraica de codificación}. \bigskip
+
+
+
+De esta forma, cualquier disciplina no se desarrolla en forma aislada o independiente, sino que es consecuencia del todo el bagaje matemático que se viene dando desde la antigüedad y por lo tanto en este trabajo de graduación se buscará hacer un estudio detallado de la teoría (básica) de los grupo-anillos, necesaria para el desarrollo de la \textit{Teoría de Códigos} , dando énfasis en la relación que tienen con la \textit{teoría de grupos} y la \textit{teoría de anillos} (de pregrado). Posteriormente, se establecerán las \textsl{condiciones necesarias} y \textsl{suficientes} para que un grupo-anillo sea \textit{semisimple}.\footnote{Un anillo $R$ es llamado \textit{semisimple} si $R$ como módulo, \textit{es suma directa de submódulos}. Clásicamente, los anillos de grupo-anillos de grupos finitos sobre los números complejos proveyeron uno
+de los más tempranos ejemplos de anillos semisimples} Además, se estudiará  la \textit{teoría de representación de grupos} y algunos casos importantes, por ejemplo cuando el grupo es abeliano. \bigskip
+% Para los pies de página, las definiciones deben ser coloquiales para no ser tan técnicos en la introducción.
+
+Luego se estudiarán las \textit{unidades}\footnote{En general, una \textit{unidad} en un anillo, es un elemento invertible.} en los grupo-anillos, indicando cuando estos pueden contener un subconjunto de unidades\footnote{Estas unidades pueden ser triviales para dicho grupo-anillo} para casos particulares. Al final, se dará una breve descripción de las aplicaciones que tienen los grupo-anillos en la teoría de códigos.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Justificación}
+La \textit{Licenciatura en Matemática Aplicada} de la \textsf{Universidad de San Carlos de Guatemala (USAC)}, tiene como objetivo contribuir al desarrollo científico del país, y poder así reducir la dependencia científica que se tiene de los países desarrollados. \bigskip
+
+El estudio de la teoría de grupos moderna es de gran utilidad en el desarrollo de la ciencia contemporánea, ya que tiene bastas aplicaciones en \textit{ciencias puras}\footnote{En física los grupos son importantes para describir las simetrías que aparentemente obedecen las leyes que gobiernan la realidad física.} y \textit{aplicadas}.\footnote{En química y ciencias de los materiales, los grupos son usados para clasificar estructuras cristalinas, poliedros regulares y las simetrías de las moléculas.} Lastimosamente, el acceso a este tipo de conocimiento en nuestro medio es bastante difícil por diversas causas: poco material en español, costo de libros, la no suscripción a revistas especializadas por parte de las pocas bibliotecas nacionales. Debido a esto es de vital importancia escribir documentos, con \textit{formalismo matemático}, que sirvan como soporte para el desenvolvimiento de los científicos de la región. \bigskip
+
+Al hablar de la estructura algebraica que se estudiará en este trabajo de graduación, cabe destacar que es un tema de investigación en los departamentos de matemáticas de reconocidas universidades del mundo ~---por ejemplo, la Universidad de São Paulo (Brasil), la Universidad de Wisconsin-Madison (EUA) y la Universidad de Alberta (Canadá)--- y que generalmente se estudia en una maestría de matemática, ver \cite{b1}. Siendo \textsf{importante} para la carrera de un científico hacer estudios de post-grado, es necesario familiarizarse con las investigaciones de la rama de la matemática en la que desea desenvolverse, y recomendable exponer dichos temas como trabajo de graduación. \bigskip
+% \footnote{Hay redundancia en esta parte, buscar otros palabras.}
+
+Por último, es importante dar a conocer cómo se puede usar el álgebra abstracta en ciencias aplicadas como sucede en la \textit{criptografía}. \cite{b9}.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Marco teórico}
+
+La \textit{teoría de grupos} como la conocemos actualmente tiene sus orígenes en los trabajos de Ruffini, Abel, Lagrange y Galois a inicios siglo \lsc{xix}, quienes trabajaron con el concepto de \textbf{permutación} (en su tiempo Cauchy las llamaba \textsf{sustituciones}, ver \cite[página 104]{b13}). Con Cayley \cite[página 104]{b14} se formalizó el concepto de \textbf{grupo} y además se dieron muchos avances significativos que impulsaron la investigación de este tema. \bigskip
+
+Por otro lado, William Rowan Hamilton en 1837, dio la primera teoría formal de números complejos, consultar \cite[página 125]{b1}, definiéndolos como "<pares ordenados de números reales">, justo como se conoce actualmente, terminando así casi trescientos años de discusión acerca de la legitimidad de dichos números. El trabajo hecho por Hamilton no es una simple formalización, más bien su trabajo permitió hacer la construcción de un álgebra que permite trabajar con vectores en el plano de dos dimensiones. \bigskip
+
+En el siglo \lsc{xix}, uno de los problemas más grandes era construir un \textit{lenguaje} apropiado para el desarrollo de la \textit{dinámica}, algo similar a lo hecho por Newton y Leibniz cuando inventaron el \textit{cálculo} para tratar problemas de \textit{mecánica}. La respuesta a ese problema fue dada por Hamilton, ver \cite[página 125]{b1}, con la creación de los \textit{números cuaterniones}. Hamilton definió a los cuaterniones como $\alpha = a+bi+cj+dk$, donde $a$, $b$, $c$, $d$ son números reales e $i$, $j$, $k$ son símbolos formales llamados \textit{unidades básicas} los cuales cumplen propiedades algebraicas interesantes. Definió su \textsf{suma}, de manera intuitiva, componente a componente con la siguiente fórmula:
+%\vspace{-0.7cm}
+\begin{equation*}
+(a+bi+cj+dk)+(a'+b'i+c'j+d'k) = (a+a')+(b+b')i+(c+c')j+(d+d')k
+\end{equation*}
+
+Lo que era realmente difícil de definir para Hamilton era el \textsf{producto} de cuaterniones, ya que al inicio él había asumido que el producto satisfacía las propiedades usuales, incluyendo la "<conmutatividad"> ~---lo cual era perfectamente razonable, ya que él no sabía en ese momento que estaba a punto de descubrir la primer álgebra no conmutativa de la historia de la matemática---. Finalmente, en 1843 \cite[página 399]{b14}  descubrió las leyes fundamentales del producto de cuaterniones:
+% agregué nueva bibliografía
+%\vspace{-0.7cm}
+\begin{equation*}
+i^2=j^2=k^2=ijk=-1
+\end{equation*} que implican las famosas fórmulas:
+%\vspace{-0.7cm}
+\begin{eqnarray*}
+ij = k = -ji \\ 
+jk = i = -kj \\
+ki = j = -ik 
+\end{eqnarray*}
+
+
+Este trabajo fue fundamental para el desarrollo de la matemática, ya que entre otras cosas abrió la posibilidad de nuevas extensiones al campo de los números complejos, precisamente cuando recientemente se había demostrado el famoso \textbf{Teorema fundamental del álgebra}, que aparentemente indicaba que la necesidad de nuevas extensiones había llegado a su fin. \bigskip
+
+En respuesta al trabajo de Hamilton, el matemático John Graves \cite[página 126]{b1} presentó un nuevo conjunto de números, los \textit{octoniones} que pueden ser definidos como un conjunto de elementos de la forma $a_0+a_1e_1+a_2e_2+\cdots + a_7e_7$, donde los coeficientes $a_i$, $1\leq i \leq 7$, son números reales y los símbolos $e_i$, $1\leq i \leq 7$, son las unidades básicas. Una vez más se definió la suma componente a componente y el producto está definido por las unidades básicas de acuerdo a ciertas reglas. El hecho más interesante de los octoniones es que su producto no es "<asociativo">.  \bigskip
+
+Posteriormente, Hamilton \cite[página 127]{b1} desarrolló los sistemas hipercomplejos. Estos son conjuntos de elementos de la forma $\alpha = a_1e_1+a_2e_2+\cdots + a_ne_n$, donde la suma es definida componente a componente y la multiplicación se establece definiendo primero los valores de los productos de las unidades básicas a pares, por lo tanto se puede hacer de la siguiente manera:
+%\vspace{-0.7cm}
+\begin{equation*}
+e_ie_j = \sum\limits_{k=1}^{n} \gamma(i,j)e_k
+\end{equation*}
+
+En otras palabras, para dar una estructura algebraica en este conjunto, es suficiente elegir convenientemente los valores de los coeficientes $\gamma (i,j)$. Debido a este hecho estos valores son llamados \textit{constantes estructurales del sistema}.\bigskip
+
+Todos estos hechos que se enunciaron anteriormente pueden ser vistos como los primeros pasos en el desarrollo de la \textbf{teoría de anillos} \cite[página 127]{b1}. Posteriormente muchos nuevos sistemas fueron descubiertos y pronto surgió la necesidad de hacer una clasificación de ellos. En la publicación de Benjamín Peirce titulada \textit{``Linear Associative Algebras''} (Algebras lineales asociativas), da una clasificación de las álgebras conocidas en 1870, determinando 162 álgebras de dimensión menor o igual a seis. Como herramienta de clasificación él introdujo la noción de elementos \textit{nilpotentes} e \textit{idempotentes}, ideas que ahora son fundamentales en la teoría de anillos.\bigskip
+
+Después de eso, siguiendo el trabajo de S. Lie y W. Killing en el estudio de \textit{grupos de Lie}, los matemáticos A. Study y G. Scheffers introdujeron \cite[página 127]{b1}, en el período de 1889--1898, el concepto de \textit{álgebra simple} y \textit{semisimple}, que son de mucha importancia en la estructura de los anillos. Fue Cayley \cite[página 128]{b1}, quién introduce por primera vez una noción de los \textbf{grupo-anillos}, en el mismo artículo donde dio la definición formal de grupo. Al final de dicho artículo Cayley escribió:
+\begin{quote}{\itshape
+\... si se considera los elementos de un grupo finito como ``unidades básicas'' de un sistema hipercomplejo entonces el producto de grupos define el producto de estas cantidades hipercomplejas.}
+\end{quote}
+
+En otras palabras, si $G=\{g_1,g_2,\dots,g_n\}$ es un grupo finito y considerando los elementos de la forma: 
+%\vspace{-0.7cm}
+\begin{equation*}
+x_1g_1+x_2g_2+\cdots + x_ng_n
+\end{equation*} donde $x_1,x_2,\dots,x_n$ son números reales o complejos, entonces el producto de dos de esos elementos $\alpha = \sum\limits_{i=1}^{n}x_ig_i$ y $\beta = \sum\limits_{j=1}^{n}y_jg_j$, está dado por: 
+%\vspace{-0.7cm}
+\begin{equation*}
+\alpha\beta = \sum\limits_{i,j}(x_iy_j)(g_ig_j)
+\end{equation*}
+
+Aunque ésta es la definición de un grupo-anillo (en este caso particular) este artículo no tuvo influencia inmediata en las matemáticas de su tiempo, los grupo-anillos cobró importancia  hasta que Theodor Molien los mencionó de nuevo en \cite{b8} como una forma natural de escribir los sistemas hipercomplejos para aplicar algunos \textit{criterios de semisimplicidad}. De esa manera Molien descubrió uno de los resultados básicos de la \textbf{teoría de la representación de grupos finitos}. \bigskip
+
+La conexión entre la teoría de la representación de grupos y la teoría de estructura de las álgebras (que es obtenida por medio de los grupo-anillos) fue reconocida después de los influyentes artículos (\cite{b10}, \cite{b11}) de Emmy Noether. Después de todos estos hechos, la estructura algebraica de los grupo-anillos ha ganado mucha importancia en el mundo de las matemáticas, tanto que hay una gran cantidad de artículos matemáticos \cite[página 129]{b1} que están siendo publicados que tratan de este tema ya que tiene diversas aplicaciones también en el mundo de la ciencia de la computación. 
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Objetivos}
+
+
+\subsection{Objetivo general}
+Describir las características fundamentales de los grupo-anillos y su  relación con la teoría de representación de grupos.
+
+\subsection{Objetivos específicos}
+Entre los objetivos específicos se tiene
+\begin{enumerate}
+\item Identificar los elementos fundamentales que dan paso al estudio de los grupo-anillos.
+\item Identificar las condiciones necesarias y suficientes para la semisimplicidad.
+\item Identificar los teoremas básicos en la teoría de representación de grupos. 
+\item Mostrar ejemplos de unidades en los grupo-anillos en casos particulares.
+\item Documentar algunas aplicaciones de los grupo-anillos en la teoría algebraica de códigos.
+\end{enumerate}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Metodología}
+
+La metodología que se empleará para el desarrollo de este trabajo de graduación se divide en varias etapas:
+
+\begin{enumerate}
+\item Se consultará, en primera instancia, las fuentes bibliográficas mencionadas en la \textit{bibliografía preliminar} para extraer las definiciones básicas de las estructuras algebraicas a estudiar. Posteriormente se utilizará el \textit{método deductivo} para demostrar una serie de teoremas que caracterizan a los grupo-anillos y muestran su relación con la teoría de representación de grupos.
+
+
+\item Se utilizará el \textit{método deductivo} para establecer la validez de un conjunto de teoremas que caracterizan las condiciones necesarias y suficientes para que un grupo-anillo se semisimple.
+
+\item Se hará uso del\textit{ método inductivo} para describir las unidades en los grupo-anillos.
+
+
+\item Finalmente, para conocer las aplicaciones de los grupo-anillos se realizarán entrevistas con profesores del Departamento de Matemática de la Universidad de Ohio, Estados Unidos, que desarrollan investigación acerca de este tema.
+ 
+\end{enumerate}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+
+
+
+
+\section{Cronograma}
+Se tabula las actividades previstas en el desarrollo del trabajo de graduación.
+% El cronograma es un cuadro semejante al utilizado en los anteproyectos FACYT,
+% meses en las etiquetas de las columnas y actividades con etiquetas de las filas, 
+% se sombrea (marca) la celda correspondiente.
+
+\vspace{1cm}
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+   \textbf{No.}  &  \textbf{Actividad a realizar} &  \textbf{Duración }\\ \hline
+  1  & Curso de propedéutico de trabajos de graduación & Concluido \\
+  2  & Elaboración del protocolo & Concluido \\
+  3  & Sección: Antecedentes & 1 semana \\
+  4  & Sección: Grupo-anillos & 2 semanas \\
+  5  & Sección: Teoría de representación de grupos & 2 semanas \\
+  6  & Sección: Unidades de los grupo-anillos & 2 semanas \\
+  7  & Sección: Aplicaciones & 1 semana \\
+  8  & Escritura de informe final & 1 semana \\
+  9  & Revisión del asesor de tesis & 1 semana \\
+  10 & Revisión del revisor de Escuela de Ciencias & 1-2 semanas \\
+  11 & Revisión departamento de Lingüística & 1-2 semanas \\
+  12 & Trámites finales & 1 semana  \\
+  13 & Impresión informe final & 2-3 días \\
+  14 & Solicitud Examen Público & 1 semana \\
+  \hline
+\end{tabular}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\section{Índice preliminar}
+El índice preliminar del trabajo de graduación es el siguiente
+\begin{align*}
+&\text{ÍNDICE DE ILUSTRACIONES}\\
+&\text{LISTADO DE SÍMBOLOS}\\
+&\text{GLOSARIO}\\
+&\text{INTRODUCCIÓN}\\
+&\text{1. CONCEPTOS PRELIMINARES}\\
+&\qquad\text{1.1 ANTECEDENTES}\\
+&\qquad\text{1.2 TEORÍA DE GRUPOS}\\
+&\qquad\text{1.3 ANILLOS, MODULOS Y ALGEBRAS}\\
+&\text{2. GRUPO-ANILLOS}\\
+&\qquad\text{2.1 HECHOS BÁSICOS DE LOS GRUPO-ANILLOS}\\
+&\qquad\text{2.2 SEMISIMPLICIDAD}\\
+&\qquad\text{2.3 ÁLGEBRAS DE GRUPOS ABELIANOS}\\
+&\text{3. TEORÍA DE REPRESENTACIÓN DE GRUPOS }\\
+&\qquad\text{3.1 DEFINICION Y EJEMPLOS}\\
+&\qquad\text{3.2 REPRESENTACIONES Y MODULOS}\\
+&\text{4. UNIDADES DE LOS GRUPO-ANILLOS }\\
+&\qquad\text{4.1 UNIDADES TRIVIALES}\\
+\end{align*}
+
+\newpage
+\begin{align*}
+&\qquad\text{4.2 GRUPOS FINITOS}\\
+&\text{5. APLICACIONES DE LOS GRUPO-ANILLOS }\\
+&\text{CONCLUSIONES}\\
+&\text{RECOMENDACIONES}\\ % piden esta onda
+&\text{REFERENCIAS}\\ % publicaciones que se citan dentro del trabajo
+&\text{BIBLIOGRAFÍA} % publicaciones que no se citaron pero sirvieron para la elaboración del trabajo
+\end{align*}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+%\section{Bibliografía preliminar}
+\begin{thebibliography}{99}
+	\addcontentsline{toc}{section}{Bibliografía preliminar}
+% Nombres completos o iniciales / mayúsculas o minúsculas jojo jo
+% faltan datos en algunas referencias, casa editorial por ejemplo
+\bibitem{b1} C. Polcino Milies y K. Sehgal. \textbf{An Introduction to Group Rings.} EUA: Kluwer Academic Publishers (2002).
+\bibitem{b2} Hernstein, I.N. \textbf{Topics in Algebra.} EUA: John Wiley and Sons (1966).
+\bibitem{b3} Lang, Serge. \textbf{Linear Algebra.} (Undergraduate Texts in Mathematics) EUA: Springer (1966).
+\bibitem{b4} McLane, S. \textbf{Categories for a working Mathematician.} 2"a ed. (Graduate Texts in Mathematics 5) EUA: Springer (1998).
+\bibitem{b5} Beachy, John. \textbf{Introductory Lectures on Rings and Modules.} Reino Unido: Cambridge University Press edition (1999).
+\bibitem{b6} Agoston, Max. \textbf{Algebraic topology: a first course.} EUA: Dekker, Marcel Inc. (1976)
+\bibitem{b7} D.S. Passman. \textbf{The algebraic Structure of Group Rings.} EUA: Wiley-In"-terscience (1977).
+\bibitem{b8} T. Molien. \textbf{Über die Invarianten der linearen Substituionsgruppen}, S'ber Akad. d. Wiss. Berlin (1897), 1152-1156.
+\bibitem{b9} B. Hurley and T. Hurley. \textbf{Group ring cryptography}, \texttt{	arXiv:1104.1724v1 [math.GR] } (2011) .
+\bibitem{b10} E. Noether. \textbf{Hyperconplexe Grössen und Darstellungtheorie}, Math. Z. 30 (1929), 641-692.
+\bibitem{b11} R. Brauer and E. Noether. \textbf{Über minimale Zerfällungskörper irreduzibler Darstellungen}, Sitz. Preuss. Akad. Wiss. Berlin (1927), 221-228.
+\bibitem{b12} R.J. McEliece. \textbf{The Algebraic Theory of Convolutional Codes}, The Handbook of Coding Theory, EUA (1983), 1:1065-1138.
+% nueva bibliografía, para algunas referencias de fechas
+\bibitem{b13} Stewart, Ian. \textbf{De aquí al infinito -- Las matemáticas de hoy.} España: Editorial Crítica (1998).
+\bibitem{b14} Bell, E.T. \textbf{Los grandes matemáticos.} Argentina: Editorial Losada (1948).
+\bibitem{herr} Gutiérrez, William. \textbf{Introducción a \TeX\ y a \LaTeXe.} Guatemala: Facultad de Ingeniería, USAC (2010).
+\end{thebibliography}
+
+\label{fin}
+\end{document} 
